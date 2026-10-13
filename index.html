@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aung’s Studio Recap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0b0f19',
+                        cardBg: '#131825',
+                        inputBg: '#0f1420',
+                        brandRed: '#f43f5e'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-darkBg text-gray-200 font-sans antialiased min-h-screen flex flex-col items-center justify-start p-3">
+
+    <!-- Mobile Container Wrapper -->
+    <div class="w-full max-w-md bg-darkBg relative rounded-3xl overflow-hidden shadow-2xl border border-gray-800">
+        
+        <!-- Top Bar -->
+        <header class="flex items-center justify-between p-4 border-b border-gray-800/60 bg-darkBg/80 backdrop-blur sticky top-0 z-20">
+            <button onclick="toggleSidebar()" class="text-gray-300 hover:text-white text-lg focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <h1 class="text-white font-bold tracking-wider text-sm flex items-center gap-1">
+                AUNG’S STUDIO RECAP
+            </h1>
+            <div class="flex items-center gap-3">
+                <button class="text-gray-300 hover:text-white relative">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <button class="bg-gradient-to-r from-amber-500 to-rose-500 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-lg shadow-rose-500/20">
+                    <i class="fa-solid fa-crown text-[10px]"></i> TRIAL
+                </button>
+            </div>
+        </header>
+
+        <!-- Sidebar Menu Overlay -->
+        <div id="sidebarOverlay" class="fixed inset-0 bg-black/70 z-40 hidden backdrop-blur-sm transition-opacity" onclick="toggleSidebar()"></div>
+        
+        <!-- Sidebar Content -->
+        <div id="sidebar" class="fixed top-0 left-0 bottom-0 w-72 bg-[#101522] z-50 transform -translate-x-full transition-transform duration-300 ease-in-out p-4 flex flex-col border-r border-gray-800">
+            <div class="flex items-center justify-between mb-6 pb-3 border-b border-gray-800">
+                <span class="text-white font-bold tracking-wide">AUNG’S STUDIO</span>
+                <button onclick="toggleSidebar()" class="text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col gap-2 overflow-y-auto">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 bg-rose-500/10 text-rose-500 rounded-xl font-medium border border-rose-500/20">
+                    <i class="fa-solid fa-clapperboard"></i> Studio
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/50 rounded-xl transition">
+                    <i class="fa-solid fa-waveform"></i> Transcript Hub
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/50 rounded-xl transition">
+                    <i class="fa-solid fa-film"></i> Story Recap V2
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/50 rounded-xl transition">
+                    <i class="fa-solid fa-circle-question"></i> အသုံးပြုနည်း
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/50 rounded-xl transition">
+                    <i class="fa-solid fa-coins"></i> Buy Credits
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/50 rounded-xl transition">
+                    <i class="fa-solid fa-receipt"></i> Orders
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/50 rounded-xl transition">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> Downloads
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/50 rounded-xl transition">
+                    <i class="fa-solid fa-download"></i> Downloader
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/50 rounded-xl transition">
+                    <i class="fa-regular fa-user"></i> Profile
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="p-4 flex flex-col gap-5 pb-10">
+
+            <!-- Video Preview Section -->
+            <div class="bg-cardBg border border-gray-800/80 rounded-2xl p-4 flex flex-col gap-3 shadow-md">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-white font-medium text-sm">
+                        <i class="fa-solid fa-circle-play text-rose-500"></i> Video Preview
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] bg-rose-500/10 text-rose-400 px-2 py-0.5 rounded border border-rose-500/20 font-semibold">4K Ultra</span>
+                        <span class="text-[10px] bg-gray-800 text-gray-400 px-2 py-0.5 rounded font-mono">00:00:00:00</span>
+                    </div>
+                </div>
+
+                <!-- Video Screen Placeholder -->
+                <div class="w-full h-48 bg-black/60 rounded-xl border border-gray-800 flex flex-col items-center justify-center text-gray-500 gap-2 relative overflow-hidden">
+                    <i class="fa-solid fa-clapperboard text-3xl opacity-40"></i>
+                    <span class="text-xs text-gray-400">Paste a video URL to see preview</span>
+                </div>
+
+                <!-- Timeline Scrubber -->
+                <div class="flex flex-col gap-1">
+                    <input type="range" min="0" max="100" value="0" class="w-full accent-rose-500 h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer">
+                    <div class="flex justify-between text-[10px] text-gray-400 font-mono">
+                        <span>00:00</span>
+                        <span>00:00</span>
+                    </div>
+                </div>
+
+                <!-- Playback & Adjustment Controls -->
+                <div class="grid grid-cols-4 gap-2 pt-1">
+                    <button class="bg-gray-800/60 hover:bg-gray-800 text-gray-200 text-xs py-2 rounded-xl flex items-center justify-center gap-1.5 transition">
+                        <i class="fa-solid fa-play text-[10px]"></i> Play
+                    </button>
+                    <button class="bg-gray-800/60 hover:bg-gray-800 text-gray-200 text-xs py-2 rounded-xl flex items-center justify-center gap-1.5 transition">
+                        <i class="fa-solid fa-volume-high text-[10px]"></i> Sound
+                    </button>
+                    <button class="bg-gray-800/60 hover:bg-gray-800 text-gray-200 text-xs py-2 rounded-xl flex items-center justify-center gap-1.5 transition">
+                        <i class="fa-solid fa-rotate-left text-[10px]"></i> 10s
+                    </button>
+                    <button class="bg-gray-800/60 hover:bg-gray-800 text-gray-200 text-xs py-2 rounded-xl flex items-center justify-center gap-1.5 transition">
+                        10s <i class="fa-solid fa-rotate-right text-[10px]"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 pt-1">
+                    <button class="bg-gray-900/50 border border-gray-800 text-gray-300 text-xs py-1.5 rounded-lg flex items-center justify-center gap-1.5">
+                        <i class="fa-regular fa-image text-[10px]"></i> Logo
+                    </button>
+                    <button class="bg-gray-900/50 border border-gray-800 text-gray-300 text-xs py-1.5 rounded-lg flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-eye-slash text-[10px]"></i> Blur
+                    </button>
+                    <button class="bg-gray-900/50 border border-gray-800 text-gray-300 text-xs py-1.5 rounded-lg flex items-center justify-center gap-1.5">
+                        <i class="fa-regular fa-closed-captioning text-[10px]"></i> Subtitles
+                    </button>
+                </div>
+            </div>
+
+            <!-- Properties Panel -->
+            <div class="bg-cardBg border border-gray-800/80 rounded-2xl p-4 flex flex-col gap-4 shadow-md">
+                
+                <!-- Property Tabs -->
+                <div class="grid grid-cols-4 bg-gray-900/80 p-1 rounded-xl border border-gray-800">
+                    <button class="bg-rose-500 text-white text-xs font-semibold py-2 rounded-lg flex flex-col items-center justify-center gap-0.5 shadow-md shadow-rose-500/20">
+                        <i class="fa-solid fa-video text-xs"></i> Source
+                    </button>
+                    <button class="text-gray-400 hover:text-white text-xs font-medium py-2 rounded-lg flex flex-col items-center justify-center gap-0.5 transition">
+                        <i class="fa-solid fa-microphone text-xs"></i> step2
+                    </button>
+                    <button class="text-gray-400 hover:text-white text-xs font-medium py-2 rounded-lg flex flex-col items-center justify-center gap-0.5 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Effects
+                    </button>
+                    <button class="text-gray-400 hover:text-white text-xs font-medium py-2 rounded-lg flex flex-col items-center justify-center gap-0.5 transition">
+                        <i class="fa-solid fa-gear text-xs"></i> Advanced
+                    </button>
+                </div>
+
+                <!-- Input Section -->
+                <div class="flex flex-col gap-2">
+                    <label class="text-[11px] font-bold text-gray-400 tracking-wider">VIDEO URL (YOUTUBE, TIKTOK, FB, IG)</label>
+                    <input type="text" placeholder="Paste video URL..." class="w-full bg-inputBg border border-gray-800 focus:border-rose-500 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none transition">
+                    <button class="w-full bg-[#1b2234] hover:bg-[#232c44] border border-gray-800 text-gray-200 font-medium text-xs py-2.5 rounded-xl flex items-center justify-center gap-2 transition shadow-sm">
+                        <i class="fa-regular fa-paste text-rose-400"></i> Paste
+                    </button>
+                </div>
+
+                <!-- Upload Toggle Option -->
+                <div class="flex items-center justify-between bg-inputBg border border-gray-800 px-3.5 py-2.5 rounded-xl">
+                    <span class="text-xs text-gray-300 font-medium">OR UPLOAD VIDEO FILE</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer">
+                        <div class="w-9 h-5 bg-gray-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-rose-500"></div>
+                    </label>
+                </div>
+
+                <!-- Crop Ratio Selection -->
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-[11px] font-bold text-gray-400 tracking-wider">CROP RATIO</label>
+                    <div class="relative">
+                        <select class="w-full bg-inputBg border border-gray-800 focus:border-rose-500 rounded-xl px-3.5 py-2.5 text-xs text-white appearance-none focus:outline-none transition cursor-pointer">
+                            <option>Original</option>
+                            <option>9:16 (TikTok/Shorts)</option>
+                            <option>16:9 (YouTube)</option>
+                            <option>1:1 (Square)</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-3.5 top-3.5 text-xs text-gray-500 pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <!-- Processing Mode Selection -->
+                <div class="flex flex-col gap-2">
+                    <label class="text-[11px] font-bold text-gray-400 tracking-wider">PROCESSING MODE</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button class="bg-inputBg hover:bg-gray-800 border border-gray-800 text-gray-300 text-xs font-medium py-2.5 rounded-xl transition">
+                            Subtitle mode
+                        </button>
+                        <button class="bg-rose-500 text-white text-xs font-semibold py-2.5 rounded-xl shadow-lg shadow-rose-500/20">
+                            Recap mode
+                        </button>
+                        <button class="bg-inputBg hover:bg-gray-800 border border-gray-800 text-gray-300 text-xs font-medium py-2.5 rounded-xl transition">
+                            Dubbing mode
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Copyright Bypass Toggle -->
+                <div class="flex items-center justify-between bg-inputBg border border-gray-800 px-3.5 py-2.5 rounded-xl">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-user-secret text-rose-500 text-xs"></i>
+                        <span class="text-xs text-gray-200 font-medium">Copyright Bypass (Zoom)</span>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="w-9 h-5 bg-gray-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-rose-500"></div>
+                    </label>
+                </div>
+
+                <!-- Next/Previous Buttons -->
+                <div class="flex flex-col gap-2 pt-2">
+                    <button class="w-full bg-[#1e2538] hover:bg-[#27304a] text-gray-400 font-semibold text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition cursor-not-allowed">
+                        Next <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                    <button class="w-full bg-[#131825] hover:bg-gray-800/80 border border-gray-800 text-gray-400 font-semibold text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-arrow-left text-[10px]"></i> Previous
+                    </button>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- JavaScript for Sidebar toggle -->
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
